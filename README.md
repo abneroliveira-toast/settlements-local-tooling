@@ -28,6 +28,8 @@ After cloning the repository:
 3. execute the console application with `yarn install` to install the Node dependencies
 4. To execute scripts, run `yarn start` to run scripts against preprod or `yarn start:prod` to run scripts against the production environment
 5. select the script you want to execute and press enter...
+   ![Script Selection Screen](docs/script-selection.png)
 6. inform the arguments for the script
+   ![Script Arguments Prompt](docs/script-arguments.png)
 7. the terminal will show the response (next version will save the results in a CSV file)
 
