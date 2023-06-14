@@ -1,16 +1,10 @@
 
 import { configDotenv } from 'dotenv';
 import pg from 'pg';
+import { EnvName, ScriptResult, shardIndex } from './types.js';
 
 configDotenv();
 
-type EnvName = 'prod' | 'preprod';
-
-type shardIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-
-export type ScriptSuccessResult = { shard: number, data: any[]}
-export type ScriptFailureResult = { shard: number, error: string}
-export type ScriptResult = ScriptFailureResult | ScriptSuccessResult;
 
 
 export async function executeScript(sql: string, queryArguments: string[], env: EnvName, shards: shardIndex[]): Promise<ScriptResult[]> {
