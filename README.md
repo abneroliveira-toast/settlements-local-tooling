@@ -1,6 +1,6 @@
 # settlements-local-tooling
 
-Experimental app with some local (UI and console) tooling for the settlements team
+Experimental app with some local (~UI and~ console) tooling for the settlements team
 
 The idea is provide a quick way to experiment locally with tooling to automate some of the
 day by day tasks of Settlements Team Engineers, allows a quick experimentation and a fast and secure way
