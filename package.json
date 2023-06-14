@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "node --loader @swc-node/register/esm src/index.ts",
-    "start:prod": "TOAST_ENV=prod node --loader @swc-node/register/esm src/index.ts"
+    "start:prod": "TOAST_ENV=prod node --loader @swc-node/register/esm src/index.ts",
+    "build": "tsc"
   },
   "devDependencies": {
     "@swc-node/register": "^1.6.5",

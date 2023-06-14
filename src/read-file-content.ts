@@ -1,7 +1,7 @@
 
 
 import * as fs from 'fs/promises';
-import { ManifestFileContent, ScriptFileContent } from './prepare-execution.js';
+import { ManifestFileContent, ScriptFileContent } from './types.js';
 
 export async function readFileContent(filePath: string): Promise<{scriptContent: ScriptFileContent, manifestContent: ManifestFileContent}> {
     const manifestFile = filePath.replace(new RegExp("\\\.sql", "gi"), '.yaml');
