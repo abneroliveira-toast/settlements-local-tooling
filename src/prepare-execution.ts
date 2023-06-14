@@ -27,7 +27,8 @@ async function promptExecutionConfirmation(
   ));
   return {
     sql,
-    queryArguments
+    queryArguments,
+    shards: scriptManifest.shards
   };
 }
 async function promptForArgument(

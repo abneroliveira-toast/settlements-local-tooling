@@ -30,7 +30,7 @@ try {
         scriptExecution.sql,
         scriptExecution.queryArguments,
         process.env['TOAST_ENV'] == 'prod' ? 'prod' : 'preprod',
-        [0,1]
+        scriptExecution.shards
     )
     for(let result of results) {
         console.log(chalk.bold(`RESULT FOR SHARD: ${result.shard}`));

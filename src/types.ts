@@ -14,6 +14,7 @@ export type ScriptResult = ScriptFailureResult | ScriptSuccessResult;
 export type ScriptToRun = {
   sql: string;
   queryArguments: string[];
+  shards: shardIndex[]
 };
 
 /**
@@ -34,6 +35,7 @@ export type ScriptManifest = {
   multiShard: boolean;
   aggregateResult: boolean;
   arguments: ScriptArgument[];
+  shards: shardIndex[]
 };
 
 /** 
