@@ -29,7 +29,7 @@ try {
     const results = await executeScript(
         scriptExecution.sql,
         scriptExecution.queryArguments,
-        'prod',
+        process.env['TOAST_ENV'] == 'prod' ? 'prod' : 'preprod',
         [0,1]
     )
     for(let result of results) {
