@@ -28,7 +28,7 @@ try {
     const scriptExecution = await prepareExecution(scriptContent, manifestContent)
     const results = await executeScript(
         scriptExecution.sql,
-        scriptExecution.arguments,
+        scriptExecution.queryArguments,
         'prod',
         [0,1]
     )

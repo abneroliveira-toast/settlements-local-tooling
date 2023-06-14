@@ -1,12 +1,13 @@
 export type ScriptToRun = {
   sql: string;
-  arguments: string[];
+  queryArguments: string[];
 };
 
 export type ScriptArgument = {
   name: string;
   validator?: string;
   promptText?: string;
+  type: 'input' | 'number' | 'password'
 };
 
 export type ScriptManifest = {
