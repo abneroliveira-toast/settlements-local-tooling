@@ -1,6 +1,6 @@
-import { configDotenv } from "dotenv";
-import pg from "pg";
-import { EnvName, ScriptResult, shardIndex } from "./types.js";
+import { configDotenv } from 'dotenv';
+import pg from 'pg';
+import { EnvName, ScriptResult, shardIndex } from './types.js';
 
 configDotenv();
 
@@ -18,7 +18,7 @@ export async function executeScript(
 
   for (let i = 0; i < clients.length; i++) {
     let client = clients[i];
-    if (client.status == "fulfilled") {
+    if (client.status == 'fulfilled') {
       try {
         const queryResult = await client.value.query(sql, queryArguments);
         results.push({ shard: i, data: queryResult.rows });
@@ -47,8 +47,8 @@ function getClientConnectionForShard(
   shardNumber: shardIndex,
   env: EnvName
 ): pg.ClientConfig {
-  const dbUrl = (process.env[getDatabaseVarName(env)] || "").replace(
-    new RegExp("\\{shardIndex}", "gi"),
+  const dbUrl = (process.env[getDatabaseVarName(env)] || '').replace(
+    new RegExp('\\{shardIndex}', 'gi'),
     shardNumber.toString()
   );
   return {

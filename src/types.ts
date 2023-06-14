@@ -1,4 +1,4 @@
-export type EnvName = "prod" | "preprod";
+export type EnvName = 'prod' | 'preprod';
 
 export type shardIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
@@ -23,7 +23,7 @@ export type ScriptArgument = {
   name: string;
   validator?: string;
   promptText?: string;
-  type: "input" | "number" | "password";
+  type: 'input' | 'number' | 'password';
 };
 
 /**

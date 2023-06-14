@@ -1,13 +1,13 @@
-import { parse } from "yaml";
-import inquirer from "inquirer";
+import { parse } from 'yaml';
+import inquirer from 'inquirer';
 import {
   ScriptFileContent,
   ManifestFileContent,
   ScriptToRun,
   ScriptManifest,
   ScriptArgument,
-} from "./types.js";
-import { validators } from "./validators.js";
+} from './types.js';
+import { validators } from './validators.js';
 
 export async function prepareExecution(
   scriptFileContent: ScriptFileContent,
@@ -22,29 +22,31 @@ async function promptExecutionConfirmation(
   sql: ScriptFileContent,
   scriptManifest: ScriptManifest
 ): Promise<ScriptToRun> {
-  const queryArguments = await Promise.all(scriptManifest.arguments.map(
-    promptForArgument
-  ));
+  const queryArguments = await Promise.all(
+    scriptManifest.arguments.map(promptForArgument)
+  );
   return {
     sql,
     queryArguments,
-    shards: scriptManifest.shards
+    shards: scriptManifest.shards,
   };
 }
 async function promptForArgument(
   scriptArgument: ScriptArgument
 ): Promise<string> {
-  const validator = scriptArgument.validator ? validators[scriptArgument.validator] : null;
+  const validator = scriptArgument.validator
+    ? validators[scriptArgument.validator]
+    : null;
   return (
     await inquirer.prompt<{ argumentValue: string }>([
       {
         type: scriptArgument.type,
-        name: "argumentValue",
+        name: 'argumentValue',
         message:
           scriptArgument.promptText ||
           `Inform the value for argument ${scriptArgument.name}`,
-        validate: validator  
-      }
+        validate: validator,
+      },
     ])
   ).argumentValue;
 }
