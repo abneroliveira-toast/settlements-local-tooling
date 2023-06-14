@@ -27,6 +27,8 @@ After cloning the repository:
 2. configure .env using the .env-template as your template and replace the <TOAST_ORDERS_USERNAME> and <TOAST_ORDERS_PASSWORD> with the credentials to each respective environment
 3. execute the console application with `yarn install` to install the Node dependencies
 4. To execute scripts, run `yarn start` to run scripts against preprod or `yarn start:prod` to run scripts against the production environment
+    > Make sure you are connected to the VPN as the script will connect into the preprod or prod
+    toastorder instances
 5. select the script you want to execute and press enter...
    ![Script Selection Screen](docs/script-selection.png)
 6. inform the arguments for the script
