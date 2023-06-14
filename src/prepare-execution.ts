@@ -7,6 +7,7 @@ import {
   ScriptManifest,
   ScriptArgument,
 } from "./types.js";
+import { validators } from "./validators.js";
 
 export async function prepareExecution(
   scriptFileContent: ScriptFileContent,
@@ -32,6 +33,7 @@ async function promptExecutionConfirmation(
 async function promptForArgument(
   scriptArgument: ScriptArgument
 ): Promise<string> {
+  const validator = scriptArgument.validator ? validators[scriptArgument.validator] : null;
   return (
     await inquirer.prompt<{ argumentValue: string }>([
       {
@@ -40,7 +42,8 @@ async function promptForArgument(
         message:
           scriptArgument.promptText ||
           `Inform the value for argument ${scriptArgument.name}`,
-      },
+        validate: validator  
+      }
     ])
   ).argumentValue;
 }
