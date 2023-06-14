@@ -1,10 +1,9 @@
 
 description: Returns the total amount of settled transactions per shard
-multi-shard: true
-aggregate-result: true
-shards: 0,1,2,3,4,5,6,7,8
+multiShard: true
+aggregateResult: true
+shards: [0,1,2,3,4,5,6,7,8]
 arguments:
-  - $1:
-    name: referenceDate
+  - name: referenceDate
     promptText: "Please inform the reference Date in format (YYYYMMDD)"
     validator: isYYYYMMDD

@@ -15,6 +15,8 @@ export type ScriptArgument = {
 
 export type ScriptManifest = {
     description: string,
+    multiShard: boolean,
+    aggregateResult: boolean,
     arguments: ScriptArgument[]
 }
 
@@ -23,7 +25,7 @@ export type ManifestFileContent = string;
 
 export async function prepareExecution(scriptFileContent: ScriptFileContent, manifestContent: ManifestFileContent): Promise<ScriptToRun> {
     const scriptManifest = parse(manifestContent) as ScriptManifest;
-
+    console.log(scriptManifest)
     return promptExecutionConfirmation(scriptManifest);
 }
 
