@@ -407,6 +407,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"csv-writer@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "csv-writer@npm:1.6.0"
+  checksum: 2e62cb46f00b674f0710eb90586000601f3a467aabe529464dcb402d453a1322a716d7522ef3282dd6551f1059305c7dd3db49def1201caaf340597dcf7b4c7e
+  languageName: node
+  linkType: hard
+
 "debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
@@ -1005,6 +1012,7 @@ __metadata:
     "@types/pg": ^8
     chalk: ^5.2.0
     cli-highlight: ^2.1.11
+    csv-writer: ^1.6.0
     dotenv: ^16.1.4
     fx: ^28.0.0
     inquirer: ^9.2.7
