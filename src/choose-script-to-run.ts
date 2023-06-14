@@ -15,5 +15,5 @@ export async function chooseScriptToRun(
     })
   ).scriptName;
 
-  return path.join(process.cwd(), SCRIPTS_FOLDER, fileChosen);
+  return fileChosen;
 }

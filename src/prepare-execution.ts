@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 import {
   ScriptFileContent,
   ManifestFileContent,
-  ScriptToRun,
+  ScriptExecutionArguments,
   ScriptManifest,
   ScriptArgument,
 } from './types.js';
@@ -12,7 +12,7 @@ import { validators } from './validators.js';
 export async function prepareExecution(
   scriptFileContent: ScriptFileContent,
   manifestContent: ManifestFileContent
-): Promise<ScriptToRun> {
+): Promise<ScriptExecutionArguments> {
   const scriptManifest = parse(manifestContent) as ScriptManifest;
   console.log(scriptManifest);
   return promptExecutionConfirmation(scriptFileContent, scriptManifest);
@@ -21,14 +21,16 @@ export async function prepareExecution(
 async function promptExecutionConfirmation(
   sql: ScriptFileContent,
   scriptManifest: ScriptManifest
-): Promise<ScriptToRun> {
+): Promise<ScriptExecutionArguments> {
   const queryArguments = await Promise.all(
     scriptManifest.arguments.map(promptForArgument)
   );
   return {
+    env: process.env['TOAST_ENV'] == 'prod' ? 'prod' : 'preprod',
     sql,
     queryArguments,
     shards: scriptManifest.shards,
+    shardAsLastQueryArgument: !!scriptManifest.shardAsLastQueryArgument,
   };
 }
 async function promptForArgument(

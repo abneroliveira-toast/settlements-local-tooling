@@ -1,15 +1,14 @@
 import { configDotenv } from 'dotenv';
 import pg from 'pg';
-import { EnvName, ScriptResult, shardIndex } from './types.js';
+import { EnvName, ScriptResult, ScriptExecutionArguments, shardIndex } from './types.js';
 
 configDotenv();
 
 export async function executeScript(
-  sql: string,
-  queryArguments: string[],
-  env: EnvName,
-  shards: shardIndex[]
+  scriptExecArguments: ScriptExecutionArguments
 ): Promise<ScriptResult[]> {
+  const { shards, sql, queryArguments, env, shardAsLastQueryArgument } =
+  scriptExecArguments;
   const clients = await Promise.allSettled(
     shards.map(async (shardNumber) => await getClientFor(shardNumber, env))
   );
@@ -20,7 +19,10 @@ export async function executeScript(
     let client = clients[i];
     if (client.status == 'fulfilled') {
       try {
-        const queryResult = await client.value.query(sql, queryArguments);
+        const queryArgumentsToPass = shardAsLastQueryArgument
+          ? [...queryArguments, shards[i]]
+          : queryArguments;
+        const queryResult = await client.value.query(sql, queryArgumentsToPass);
         results.push({ shard: i, data: queryResult.rows });
       } catch (e) {
         results.push({ shard: i, error: `${e}` });

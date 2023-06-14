@@ -10,10 +10,12 @@ export type ScriptResult = ScriptFailureResult | ScriptSuccessResult;
  * Object with the script which will be executed and the arguments which will be passed
  * into the sql script
  */
-export type ScriptToRun = {
+export type ScriptExecutionArguments = {
   sql: string;
   queryArguments: string[];
   shards: shardIndex[];
+  shardAsLastQueryArgument: boolean;
+  env: EnvName;
 };
 
 /**
@@ -35,6 +37,7 @@ export type ScriptManifest = {
   aggregateResult: boolean;
   arguments: ScriptArgument[];
   shards: shardIndex[];
+  shardAsLastQueryArgument: boolean;
 };
 
 /**
