@@ -1,5 +1,4 @@
 
-import chalk from 'chalk';
 import { configDotenv } from 'dotenv';
 import pg from 'pg';
 
@@ -62,12 +61,3 @@ function getClientConnectionForShard(shardNumber: shardIndex, env: EnvName): pg.
 function getDatabaseVarName(env: EnvName) {
     return `TOAST_ORDERS_${env.toUpperCase()}`;
 }
-
-
-// try {
-//     const result = await executeScript(`SELECT sum(amount) FROM "RestaurantDailySettlement" rds 
-//     where rds."date_timestampYyyymmdd" = $1;`, ['20230613'], 'prod', [0, 1]);
-//     console.log(chalk.bold(JSON.stringify(result, null, '  ')));
-// } catch (e) {
-//     console.error(chalk.red(`Failed to execute script: ${e}`));
-// }
