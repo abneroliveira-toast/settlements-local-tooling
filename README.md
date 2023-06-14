@@ -32,4 +32,4 @@ After cloning the repository:
 6. inform the arguments for the script
    ![Script Arguments Prompt](docs/script-arguments.png)
 7. the terminal will show the response (next version will save the results in a CSV file)
-
+   ![Script Results](docs/script-result.png)
