@@ -57,3 +57,4 @@ After cloning the repository:
 2. Make sure the project dependencies are updated: `yarn install`
 3. Connect into the aws cli using the `oktoast prod`
 4. Execute the muid lookup executing the command `yarn run muidlookup`
+5. A result file called `mids.json` will be saved in the `./output` directory
