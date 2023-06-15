@@ -20,7 +20,7 @@ to share scripts and other toolings which would help us with our day by day task
 
 * [ ] Add shard brain capability (allow to receive merchant GUID as the query parameter and decide the shard which will be targeted)
 
-* [ ] Add DynamoDB capabilities:
+* ✅ Add DynamoDB capabilities:
   - DynamoDB scripts
   - Merchant MUID lookup
 
@@ -33,6 +33,8 @@ to share scripts and other toolings which would help us with our day by day task
 
 ## How to use
 
+
+### Execute SQL Scripts
 After cloning the repository:
 
 1. go to the terminal, `cd` into the project directory and execute `yarn install`;
@@ -47,3 +49,11 @@ After cloning the repository:
    ![Script Arguments Prompt](docs/script-arguments.png)
 7. the terminal will show the response (next version will save the results in a CSV file)
    ![Script Results](docs/script-result.png)
+
+
+### Merchant UUID Lookup
+
+1. Add the submerchant ids and respective vendor types to the `dynamo-scripts/submerchant_ids.csv` file.
+2. Make sure the project dependencies are updated: `yarn install`
+3. Connect into the aws cli using the `oktoast prod`
+4. Execute the muid lookup executing the command `yarn run muidlookup`

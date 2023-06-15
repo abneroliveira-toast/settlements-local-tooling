@@ -31,7 +31,7 @@ const run = async () => {
 
       const resultDynamoList = await schema.getItems(batchItemsArgArr);
 
-      for (i = 0; i < resultDynamoList.length; i++) {
+      for (let rowIndex = 0; rowIndex < resultDynamoList.length; rowIndex++) {
         let resultDynamo = resultDynamoList[i];
         let mid = resultDynamo.attrs.PK.replaceAll("MERCHANT_ID#", "");
         result[mid] = {

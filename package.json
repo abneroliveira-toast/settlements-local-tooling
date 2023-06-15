@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node --loader @swc-node/register/esm src/index.ts",
     "start:prod": "TOAST_ENV=prod node --loader @swc-node/register/esm src/index.ts",
+    "muidlookup": "node ./dynamo-scripts/muid_lookup.js",
     "build": "tsc"
   },
   "devDependencies": {
