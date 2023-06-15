@@ -12,11 +12,23 @@ to share scripts and other toolings which would help us with our day by day task
 ### 1. Tooling for execute a given sql query against all the shards which contains CHASE or WORLDPAY configured restaurants
 
 
-* [x] MVP: Provide a command line implementation, which will run scripts provided by an sql argument file provided.
+* ✅ MVP: Provide a command line implementation, which will run scripts provided by an sql argument file provided.
 
-* [ ] second version: Have a local knowledge-base scripts in the db-scripts folder which will allow to select between the scripts the one which will be executed
+* ✅ second version: Have a local knowledge-base scripts in the sql-scripts folder which will allow to select between the scripts the one which will be executed
 
-* [ ] third version: Provide a graphic UI which will be easy to be used and will allow to export the result of a query to a Google Spreadsheet or a csv file
+* ✅ Generate CSV and JSON output files with the result of the scripts execution
+
+* [ ] Add shard brain capability (allow to receive merchant GUID as the query parameter and decide the shard which will be targeted)
+
+* [ ] Add DynamoDB capabilities:
+  - DynamoDB scripts
+  - Merchant MUID lookup
+
+* [ ] Add ledger inspection capabilities   
+
+* [ ] Add more usable scripts to the repository
+
+* [ ] Provide a graphic UI
 
 
 ## How to use
