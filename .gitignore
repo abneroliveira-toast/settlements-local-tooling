@@ -130,7 +130,8 @@ dist
 .pnp.*
 
 output/*
-
+data/
 
 *.csv
 *.txt
+

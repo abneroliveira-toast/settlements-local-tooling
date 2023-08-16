@@ -12,13 +12,14 @@ const muidMap: { [submerchantId: string]: { guid: string } } = {
   ...getMuidJson('./data/result-5.json'),
   ...getMuidJson('./data/result-6.json'),
   ...getMuidJson('./data/result-7.json'),
+  ...getMuidJson('./data/result-8.json'),
+  ...getMuidJson('./data/result-9.json'),
 };
 
 const s3FilesKeys = [
-  // '20230815/44002_0_e91e0838-5183-4c8a-8de8-fc85c54c3b48', // 000BRi00 -- already paid
+  '20230815/44002_0_e91e0838-5183-4c8a-8de8-fc85c54c3b48', // 000BRi00 -- already paid
   '20230815/44002_2_e5861c90-07c5-4797-8b89-b46404cf6a5e', // 000BRi02
   '20230815/44002_3_70e9f4f2-e43d-4eb6-911d-8522a313c97e', // 000BRi03
-
   '20230815/44003_0_c2924e8b-8355-4f44-87f5-c08f26232282', // 000BRj00
   '20230815/17771_0_9d6a8f3d-bb18-425a-95cf-ee9368c5d39b', // 0004cdzI
   '20230815/44002_1_0ee51bb1-2062-432d-aca8-76769cfedc61', // 000BRi01
@@ -91,15 +92,15 @@ try {
   //       flags: 'a', // 'a' means appending (old data will be preserved)
   //     }
   //   );
-  fileWritter.write('submerchantId, amount\r\n');
-  //submerchantIdCsvFileWriter.write('submerchantId, vendor\r\n');
+  fileWritter.write('submerchantId, muid, amount\r\n');
+  // submerchantIdCsvFileWriter.write('submerchantId, vendor\r\n');
 
   // for each submerchantId key, write the result to the csv file
   Object.keys(hashMerchantsAggregated).forEach((submerchantId) => {
     let muid = muidMap[submerchantId].guid;
     let amount = hashMerchantsAggregated[submerchantId] / 100;
     fileWritter.write(`${submerchantId}, ${muid}, ${amount}\r\n`);
-    // submerchantIdCsvFileWriter.write(`${submerchantId}, CHS\r\n`);
+    //submerchantIdCsvFileWriter.write(`${submerchantId}, CHS\r\n`);
   });
   fileWritter.close();
   //submerchantIdCsvFileWriter.close();
