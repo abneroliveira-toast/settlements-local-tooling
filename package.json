@@ -5,18 +5,22 @@
   "scripts": {
     "start": "node --loader @swc-node/register/esm src/index.ts",
     "start:prod": "TOAST_ENV=prod node --loader @swc-node/register/esm src/index.ts",
-    "muidlookup": "node ./dynamo-scripts/muid_lookup.js",
-    "build": "tsc"
+    "muidlookup": "TOAST_ENV=prod node ./nodejs-scripts/muid_lookup.js",
+    "muidlookup:preprod": "node ./nodejs-scripts/muid_lookup.js",
+    "build": "tsc",
+    "activate-ledger-maintable-ffs": "node --loader @swc-node/register/esm nodejs-scripts/activate-ledger-maintable-ff.ts"
   },
   "devDependencies": {
     "@swc-node/register": "^1.6.5",
     "@swc/core": "^1.3.63",
     "@types/dynamodb": "^1",
     "@types/inquirer": "^9",
+    "@types/node": "18.16.18",
     "@types/pg": "^8",
     "typescript": "^5.1.3"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.32.0",
     "chalk": "^5.2.0",
     "cli-highlight": "^2.1.11",
     "csv-reader": "^1.0.12",

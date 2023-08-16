@@ -6,6 +6,10 @@ export type ScriptSuccessResult = { shard: number; data: any[] };
 export type ScriptFailureResult = { shard: number; error: string };
 export type ScriptResult = ScriptFailureResult | ScriptSuccessResult;
 
+export type MUID = string;
+
+export type yyyymmdd = string;
+
 /**
  * Object with the script which will be executed and the arguments which will be passed
  * into the sql script
